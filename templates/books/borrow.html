@@ -1,0 +1,21 @@
+{% extends 'books/base.html' %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-4">
+        <a href="{% url 'home' %}" class="my-3 btn btn-dark btn-sm">Go Back</a>
+        <div class="card shadow-lg">
+            <div class="card-body">
+                <form method="POST" action="{% url 'borrow' %}">
+                    {% csrf_token %}
+                    <!-- Add input fields to collect user information -->
+                    <div class="mb-3">
+                        <label class="form-label font-weight-bold">User Name</label>
+                        <input required type="text" name="username" class="form-control" placeholder="Enter User Name">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label font-weight-bold">Expected Return Date</label>
+                        <input required type="text" name="return_date" class="form-control" placeholder="Enter Return Date">
+                    </div>
+                    <!-- Add a button to initiate the borrow action -->
+                    <button type="submit" class="btn
